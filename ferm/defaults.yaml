@@ -2,4 +2,7 @@
 Debian:
   pkgs:
     - ferm
+  service: {}
+  config:
+    ferm: {}
 {% endload %}
