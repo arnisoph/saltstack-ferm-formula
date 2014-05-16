@@ -17,7 +17,6 @@ ferm:
     - require:
       - pkg: ferm
 {% if datamap.configure|default(False) %}
-      - file: ferm
     - watch:
       - file: ferm
   file:
@@ -28,4 +27,14 @@ ferm:
     - user: root
     - group: root
     - template: jinja
+    - require:
+      - file: ferm_dir
+
+ferm_dir:
+  file:
+    - directory
+    - name: {{ datamap.config.fermdir.path|default('/etc/ferm') }}
+    - mode: 700
+    - user: root
+    - group: root
 {% endif %}

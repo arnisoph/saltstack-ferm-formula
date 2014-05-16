@@ -12,7 +12,7 @@ NOTICE BEFORE YOU USE
 TODO
 ====
 
-None
+* provide init script for RedHat based systems
 
 Instructions
 ============
@@ -58,11 +58,12 @@ Salt Compatibility
 
 Tested with:
 
-* 2014.1.1
+* 2014.1.3
 
 OS Compatibility
 ================
 
 Tested with:
 
-* GNU/ Linux Debian Wheezy
+* GNU/ Linux Debian Wheezy 7.5
+* Centos 6.5
