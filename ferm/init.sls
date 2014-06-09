@@ -1,3 +1,5 @@
+#!jinja|yaml
+
 {% from "ferm/defaults.yaml" import rawmap with context %}
 {% set datamap = salt['grains.filter_by'](rawmap, merge=salt['pillar.get']('ferm:lookup')) %}
 
@@ -16,25 +18,33 @@ ferm:
     - sig: {{ datamap.service.sig|default('init') }}
     - require:
       - pkg: ferm
-{% if datamap.configure|default(False) %}
-    - watch:
-      - file: ferm
+
+fermconf_dir:
+  file:
+    - directory
+    - name: {{ datamap.config.fermconfdir.path|default('/etc/ferm/conf.d') }}
+    - dir_mode: 700
+    - file_mode: 600
+    - user: root
+    - group: root
+    - makedirs: True
+    - recurse:
+      - mode
+      - user
+      - group
+
+{% for c in datamap.configs|default([]) %}
+ferm_config_{{ c.name }}:
   file:
     - managed
-    - name: {{ datamap.config.ferm.path|default('/etc/ferm/ferm.conf') }}
-    - source: {{ datamap.config.ferm.template_path|default('salt://ferm/files/ferm.conf') }}
-    - mode: '0644'
+    - name: {{ c.path }}
+    - source: {{ c.template_path }}
+    - mode: 600
     - user: root
     - group: root
     - template: jinja
     - require:
-      - file: ferm_dir
-
-ferm_dir:
-  file:
-    - directory
-    - name: {{ datamap.config.fermdir.path|default('/etc/ferm') }}
-    - mode: 700
-    - user: root
-    - group: root
-{% endif %}
+      - file: fermconf_dir
+    - watch_in:
+      - service: ferm
+{% endfor %}

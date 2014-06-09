@@ -31,12 +31,17 @@ Available states
 
 ``ferm``
 --------
-Install ferm
+Setup and configure ferm
 
 Additional resources
 ====================
 
 None
+
+Templates
+=========
+
+Some states/ commands may refer to templates which aren't included in the files folder (``ferm/files``). Take a look at ``contrib/`` (if present) for e.g. template examples and place them in separate file roots (e.g. Git repository, refer to `GitFS <http://docs.saltstack.com/topics/tutorials/gitfs.html>`_) in your Salt master config.
 
 Formula Dependencies
 ====================

@@ -5,12 +5,12 @@ Debian:
   service: {}
   config:
     ferm: {}
-    fermdir: {}
+    fermconfdir: {}
 RedHat:
   pkgs:
     - ferm
   service: {}
   config:
     ferm: {}
-    fermdir: {}
+    fermconfdir: {}
 {% endload %}
