@@ -6,18 +6,13 @@
 ferm:
   pkg:
     - installed
-    - pkgs:
-{% for p in datamap.pkgs %}
-      - {{ p }}
-{% endfor %}
+    - pkgs: {{ datamap.pkgs }}
   service:
     - {{ datamap.ensure|default('running') }}
     - name: {{ datamap.service.name|default('ferm') }}
     - enable: {{ datamap.service.enable|default(True) }}
     {# TODO: Currently it's not possible to set custom status checks. Therefor, (re)start if file has changed only #}
     - sig: {{ datamap.service.sig|default('init') }}
-    - require:
-      - pkg: ferm
 
 fermconf_dir:
   file:
@@ -28,17 +23,19 @@ fermconf_dir:
     - user: root
     - group: root
     - makedirs: True
+    #TODO activate this as soon as usbale: - clean: True
     - recurse:
       - mode
       - user
       - group
 
-{% for c in datamap.configs|default([]) %}
-ferm_config_{{ c.name }}:
+{% set configs = datamap.configs|default({}) %}
+{% for k, v in configs.items() %}
+ferm_config_{{ k }}:
   file:
     - managed
-    - name: {{ c.path }}
-    - source: {{ c.template_path }}
+    - name: {{ v.path }}
+    - source: {{ v.template_path }}
     - mode: 600
     - user: root
     - group: root
