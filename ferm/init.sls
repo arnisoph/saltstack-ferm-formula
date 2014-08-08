@@ -23,7 +23,7 @@ fermconf_dir:
     - user: root
     - group: root
     - makedirs: True
-    #TODO activate this as soon as usbale: - clean: True
+    #TODO activate this as soon as it works as expected: - clean: True
     - recurse:
       - mode
       - user
