@@ -7,12 +7,18 @@ ferm:
   pkg:
     - installed
     - pkgs: {{ datamap.pkgs }}
+{% if 'service' in datamap %}
   service:
     - {{ datamap.ensure|default('running') }}
     - name: {{ datamap.service.name|default('ferm') }}
     - enable: {{ datamap.service.enable|default(True) }}
     {# TODO: Currently it's not possible to set custom status checks. Therefor, (re)start if file has changed only #}
     - sig: {{ datamap.service.sig|default('init') }}
+{% else %}
+  cmd:
+    - wait
+    - name: {{ datamap.cmd_refresh_rules }}
+{% endif %}
 
 fermconf_dir:
   file:
@@ -43,5 +49,9 @@ ferm_config_{{ k }}:
     - require:
       - file: fermconf_dir
     - watch_in:
+  {% if 'service' in datamap %}
       - service: ferm
+  {% else %}
+      - cmd: ferm
+  {% endif %}
 {% endfor %}

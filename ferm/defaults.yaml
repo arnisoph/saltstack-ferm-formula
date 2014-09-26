@@ -9,8 +9,8 @@ Debian:
 RedHat:
   pkgs:
     - ferm
-  service: {}
   config:
     ferm: {}
     fermconfdir: {}
+  cmd_refresh_rules: ferm --flush /etc/ferm/ferm.conf && ferm /etc/ferm/ferm.conf
 {% endload %}
