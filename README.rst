@@ -12,7 +12,7 @@ NOTICE BEFORE YOU USE
 TODO
 ====
 
-* provide init script for RedHat based systems
+None
 
 Instructions
 ============
@@ -36,7 +36,7 @@ Setup and configure ferm
 Additional resources
 ====================
 
-None
+To let ferm doing it's work when booting the system on RedHat-based systems you can add such a command to ``/etc/rc.d/rc.local``. The `sysvinit-formula <https://github.com/bechtoldt/sysvinit-formula/blob/master/pillar.example.sls#L10>`_ with it.
 
 Templates
 =========
@@ -64,6 +64,7 @@ Salt Compatibility
 Tested with:
 
 * 2014.1.x
+* 2014.7.x
 
 OS Compatibility
 ================
