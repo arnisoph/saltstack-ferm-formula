@@ -12,7 +12,7 @@ NOTICE BEFORE YOU USE
 TODO
 ====
 
-None
+* write states to configure ferm via pillars instead of files
 
 Instructions
 ============
