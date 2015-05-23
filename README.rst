@@ -1,75 +1,83 @@
-============
-ferm-formula
-============
+======================
+saltstack-ferm-formula
+======================
 
-Salt Stack Formula to set up and configure ferm, a frontend for ip(6)tables
 
-NOTICE BEFORE YOU USE
-=====================
+.. image:: https://img.shields.io/badge/flattr-donate-red.svg
+    :alt: Donate via flattr
+    :target: https://flattr.com/profile/bechtoldt
 
-* This formula aims to follow the conventions and recommendations described at http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html#conventions-formula and http://docs.saltstack.com/en/latest/topics/best_practices.html
+.. image:: https://img.shields.io/gratipay/bechtoldt.svg
+    :alt: Donate via Gratipay
+    :target: https://www.gratipay.com/bechtoldt/
 
-TODO
-====
+.. image:: https://img.shields.io/badge/license-Apache--2.0-blue.svg
+    :alt: Apache-2.0-licensed
+    :target: https://github.com/bechtoldt/saltstack-ferm-formula/blob/master/LICENSE
 
-None
+.. image:: https://img.shields.io/badge/gitter-chat-brightgreen.svg
+    :alt: Join Chat
+    :target: https://gitter.im/bechtoldt/saltstack-ferm-formula?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
-Instructions
-============
-
-1. Add this repository as a `GitFS <http://docs.saltstack.com/topics/tutorials/gitfs.html>`_ backend in your Salt master config.
-
-2. Configure your Pillar top file (``/srv/pillar/top.sls``), see pillar.example
-
-3. Include this Formula within another Formula or simply define your needed states within the Salt top file (``/srv/salt/top.sls``).
-
-Available states
-================
+SaltStack Formula to set up and configure ferm, a frontend for ip(6)tables
 
 .. contents::
+    :backlinks: none
     :local:
 
-``ferm``
---------
-Setup and configure ferm
 
-Additional resources
-====================
+Instructions
+------------
 
-To let ferm doing it's work when booting the system on RedHat-based systems you can add such a command to ``/etc/rc.d/rc.local``. The `sysvinit-formula <https://github.com/bechtoldt/sysvinit-formula/blob/master/pillar.example.sls#L10>`_ with it.
+Please refer to https://github.com/bechtoldt/formula-docs to learn how to use
+this formula, how it is built and how you can add your changes.
 
-Templates
-=========
+**NOTICE:** This formula might uses the formhelper module which is a very useful Salt execution module that isn't available
+in upstream yet. Please consider retrieving it manually from https://github.com/bechtoldt/salt-modules and
+make it available to your Salt installation. Read `SaltStack documentation <http://docs.saltstack.com/en/latest/ref/modules/#modules-are-easy-to-write>`_ to
+see how this can be achieved.
 
-Some states/ commands may refer to templates which aren't included in the files folder (``ferm/files``). Take a look at ``contrib/`` (if present) for e.g. template examples and place them in separate file roots (e.g. Git repository, refer to `GitFS <http://docs.saltstack.com/topics/tutorials/gitfs.html>`_) in your Salt master config.
+Take a look at older `releases <https://github.com/bechtoldt/saltstack-ferm-formula/releases>`_ to get a version that isn't using the formhelper
+yet (if any).
 
-Formula Dependencies
-====================
 
-None
+Contributing
+------------
 
-Contributions
-=============
+Contributions are welcome! All development guidelines we ask you to follow can
+be found at https://github.com/bechtoldt/formula-docs.
 
-Contributions are always welcome. All development guidelines you have to know are
+In general:
 
-* write clean code (proper YAML+Jinja syntax, no trailing whitespaces, no empty lines with whitespaces, LF only)
-* set sane default settings
-* test your code
-* update README.rst doc
+1. Fork this repo on Github
+2. Add changes, test them, update docs (README.rst) if possible
+3. Submit your pull request (PR) on Github, wait for feedback
 
-Salt Compatibility
-==================
+But it’s better to `file an issue <https://github.com/bechtoldt/saltstack-ferm-formula/issues/new>`_ with your idea first.
 
-Tested with:
 
-* 2014.1.x
-* 2014.7.x
+Authors
+-------
 
-OS Compatibility
-================
+* Arnold Bechtoldt <mail@arnoldbechtoldt.com>
 
-Tested with:
 
-* GNU/ Linux Debian Wheezy
-* Centos 6
+TODO
+----
+
+* add instructions how to use formhelper, add information about it in the formula-docs (dependency), show up alternative?
+* table/ matrix: os/salt compatibility (dedicated file)
+* add list of available states
+* add tests
+
+
+Miscellaneous
+-------------
+
+Recommended formulas:
+
+* SaltStack management: `saltstack-salt-formula <https://github.com/bechtoldt/saltstack-salt-formula>`_
+
+Further reading:
+
+* Documentation and Standardisation of SaltStack formulas: https://github.com/bechtoldt/formula-docs

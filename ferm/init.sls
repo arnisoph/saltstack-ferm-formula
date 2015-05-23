@@ -46,6 +46,7 @@ ferm_config_{{ k }}:
     - user: root
     - group: root
     - template: jinja
+    - order: 3000
     - require:
       - file: fermconf_dir
     - watch_in:
