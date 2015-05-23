@@ -69,6 +69,7 @@ TODO
 * table/ matrix: os/salt compatibility (dedicated file)
 * add list of available states
 * add tests
+* write states to configure ferm via pillars instead of files
 
 
 Miscellaneous
