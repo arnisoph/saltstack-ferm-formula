@@ -3,7 +3,7 @@ saltstack-ferm-formula
 ======================
 
 
-.. image:: https://img.shields.io/badge/flattr-donate-red.svg
+.. image:: https://img.shields.io/badge/donate-flattr-red.svg
     :alt: Donate via flattr
     :target: https://flattr.com/profile/bechtoldt
 
@@ -15,9 +15,13 @@ saltstack-ferm-formula
     :alt: Apache-2.0-licensed
     :target: https://github.com/bechtoldt/saltstack-ferm-formula/blob/master/LICENSE
 
-.. image:: https://img.shields.io/badge/gitter-chat-brightgreen.svg
-    :alt: Join Chat
+.. image:: https://img.shields.io/badge/chat-gitter-brightgreen.svg
+    :alt: Join Gitter Chat
     :target: https://gitter.im/bechtoldt/saltstack-ferm-formula?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
+.. image:: https://img.shields.io/badge/chat-%23salt%20@%20Freenode-brightgreen.svg
+    :alt: Join Internet Relay Chat
+    :target: http://webchat.freenode.net/?channels=%23salt&uio=d4
 
 SaltStack Formula to set up and configure ferm, a frontend for ip(6)tables
 
